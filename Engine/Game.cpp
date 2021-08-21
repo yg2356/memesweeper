@@ -43,7 +43,18 @@ void Game::UpdateModel()
 	if (wnd.mouse.LeftIsPressed())
 	{
 		const Vei2 mousePos = wnd.mouse.GetPos();
-		field.OnRevealClick(wnd.mouse.GetPos());
+		if (field.GetRect().Contatins(mousePos))
+		{
+			field.OnRevealClick(wnd.mouse.GetPos());
+		}
+	}
+	else if (wnd.mouse.RightIsPressed())
+	{
+		const Vei2 mousePos = wnd.mouse.GetPos();
+		if (field.GetRect().Contatins(mousePos))
+		{
+			field.OnFlagClick(wnd.mouse.GetPos());
+		}
 	}
 }
 
